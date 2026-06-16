@@ -4,8 +4,6 @@
 
 **By Deamonmist**
 
-![status](https://img.shields.io/badge/status-1.0.0--beta.1-orange) ![platform](https://img.shields.io/badge/MCU-XIAO%20ESP32--C5-blue) ![updated](https://img.shields.io/badge/updated-June%2015%2C%202026-lightgrey)
-
 A portable war-driver built from basic components that passes as a nifty home-made analog clock. It shows the real time on a round TFT face with a satellite-connection indicator, battery gauge, active-wardriving indicator, and random messages — all wrapped in a digital Art Deco style.
 
 ---
