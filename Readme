@@ -7,45 +7,40 @@
 A portable war-driver built from basic components that passes as a nifty home-made analog clock. It shows the real time on a round TFT face with a satellite-connection indicator, battery gauge, active-wardriving indicator, and random messages — all wrapped in a digital Art Deco style.
 
 ---
-
 ## Contents
 
-- [Mission Statement](#mission-statement)
-- [Overall Design](#overall-design)
-  - [Form Factor](#form-factor)
-  - [Components](#components)
-- [Assembly](#assembly)
-  - [Wiring Diagrams](#wiring-diagrams)
-    - [ATGM336H — GPS Module](#atgm336h--gps-module)
-    - [GC9A01 — Round TFT Display](#gc9a01--round-tft-display)
-    - [V474 — SD Card Module](#v474--sd-card-module)
-    - [XIAO ESP32-C5 — MCU Pin Usage](#xiao-esp32-c5--mcu-pin-usage)
-    - [On/Off Switch (Left Side)](#onoff-switch-left-side)
-    - [Wardrive Slide Switch (Right Side)](#wardrive-slide-switch-right-side)
-    - [Dim Tactile Button](#dim-tactile-button)
-    - [LiPo Battery](#lipo-battery)
-    - [Battery Voltage Sense Circuit](#battery-voltage-sense-circuit-onboard)
-  - [Circuit Assembly](#circuit-assembly)
-- [3D Printing](#3d-printing)
-- [Final Assembly](#final-assembly)
-- [Flashing Your XIAO ESP32-C5](#flashing-your-xiao-esp32-c5)
+- Mission Statement
+- Overall Design
+  - Form Factor
+  - Components
+- Assembly
+  - Wiring Diagrams
+    - ATGM336H — GPS Module
+    - GC9A01 — Round TFT Display
+    - V474 — SD Card Module
+    - XIAO ESP32-C5 — MCU Pin Usage
+    - On/Off Switch (Left Side)
+    - Wardrive Slide Switch (Right Side)
+    - Dim Tactile Button
+    - LiPo Battery
+    - Battery Voltage Sense Circuit
+  - Circuit Assembly
+- 3D Printing
+- Final Assembly
+- Flashing Your XIAO ESP32-C5
 
 ---
-
 ## Mission Statement
 
 The goal of this project is simple: use basic components to make a portable war-driver that can pass as some kind of nifty home-made clock.
 
 ---
-
 ## Overall Design
 
 ### Form Factor
-
 A small 3D-printed case containing a series of small modules and development boards that display the real time on an analog clock. The clock comes with a satellite-connection indicator, battery-life gauge, active-wardriving indicator, and random messages. The design is based on a digital Art Deco style.
 
 ### Components
-
 - **GPS module** (ATGM336H) with ceramic antenna
 - **1.28" round TFT screen** (GC9A01)
 - **SD module**
@@ -61,13 +56,11 @@ A small 3D-printed case containing a series of small modules and development boa
 ## Assembly
 
 ### Wiring Diagrams
-
 Complete pin mapping for all components.
 
-> ⚠️ **Note:** The XIAO ESP32-C5 silkscreen D-numbers do **not** match the GPIO numbers. Always use the **GPIO** column when writing firmware.
+**Note:** The XIAO ESP32-C5 silkscreen D-numbers do **not** match the GPIO numbers. Always use the **GPIO** column when writing firmware.
 
 #### ATGM336H — GPS Module
-
 | GPS Pin | XIAO Pin | GPIO |
 | --- | --- | --- |
 | TX | D7 (RX) | GPIO12 |
@@ -76,7 +69,6 @@ Complete pin mapping for all components.
 | GND | GND | — |
 
 #### GC9A01 — Round TFT Display
-
 | TFT Pin | XIAO Pin | GPIO |
 | --- | --- | --- |
 | SCL / SCK | D8 | GPIO8 |
@@ -88,7 +80,6 @@ Complete pin mapping for all components.
 | GND | GND | — |
 
 #### V474 — SD Card Module
-
 | SD Pin | XIAO Pin | GPIO |
 | --- | --- | --- |
 | SCK | D8 (shared SPI) | GPIO8 |
@@ -99,7 +90,6 @@ Complete pin mapping for all components.
 | GND | GND | — |
 
 #### XIAO ESP32-C5 — MCU Pin Usage
-
 | Function | XIAO Pin | GPIO |
 | --- | --- | --- |
 | SPI SCK | D8 | GPIO8 |
@@ -116,59 +106,47 @@ Complete pin mapping for all components.
 | Battery +/− | BAT pads | — |
 
 #### On/Off Switch (Left Side)
-
 | Switch Leg | XIAO Pin | GPIO |
 | --- | --- | --- |
 | Leg 1 (signal) | Bat + on XIAO| — |
 | Leg 2 (common) | Bat + on Battery | — |
-
 Interrupt the positive battery line with a switch.
 
 #### Wardrive Slide Switch (Right Side)
-
 | Switch Leg | XIAO Pin | GPIO |
 | --- | --- | --- |
 | Leg 1 (signal) | D5 | GPIO24 |
 | Leg 2 (common) | GND | — |
-
 `LOW` = wardrive active. `HIGH` = idle. Internal pullup enabled in firmware.
 
 #### Dim Tactile Button
-
 | Button Leg | XIAO Pin | GPIO |
 | --- | --- | --- |
 | Leg 1 (signal) | D4 | GPIO23 |
 | Leg 2 (common) | GND | — |
-
 Press toggles black-screen dim. Auto-dims after 2 minutes. Internal pullup enabled.
 
 #### LiPo Battery
-
 | Battery Wire | XIAO Pad | Note |
 | --- | --- | --- |
 | Positive (+) | BAT + | Soldered direct to pad |
 | Negative (−) | BAT − | Soldered direct to pad |
-
 Charged via USB-C. The onboard SGM40567 handles charge management. Do not exceed the 500mAh cell rating.
 
 #### Battery Voltage Sense Circuit (onboard)
-
 | Signal | XIAO Pin | GPIO | Note |
 | --- | --- | --- | --- |
 | ADC input | — | GPIO6 | Reads divided BAT voltage |
 | ADC enable | Back pad A4 | GPIO26 | Drive HIGH to enable, LOW when idle |
 
 ---
-
 ### Circuit Assembly
 
 Because a perforated board, modules, and dev boards are being packed into a very small space, there is a lot to fit. A general step-by-step visual guide is provided, but representing the wiring visually is too challenging — please refer to the [wiring diagrams](#wiring-diagrams) above.
 
 Download READ-Me-WarcLock.docx for step by step instructions with pictures.
 
-
 ## 3D Printing
-
 There are **5 parts** to print, listed on the GitHub page for download. From bottom to top:
 
 - `ClockBottomInlay.stl`
@@ -182,7 +160,6 @@ All prints include designed-in supports. If they're laid flat for printing, you 
 > 🛠️ You may occasionally get an error on `ClockBodywSupports.stl`. You can enable slicer supports, but they make it harder to remove the design supports. If this file starts to spaghettify, enable supports.
 
 ---
-
 ## Final Assembly
 
 Refer to READ-Me-WarcLock.docx for step by step instructions with pictures.
@@ -198,37 +175,22 @@ The pieces used in final construction, from left to right:
 - `ClockDetailInlay.stl`
 
 1. Apply super glue to the back of the bottom plate.
-  
 2. Attach the back plate to the bottom plate (and place an NFC tag if desired).
-
 3. The antenna that comes with the XIAO ESP32-C5 must have its connection end fed through the hole in the clock body housing.
-
 4. The connection end of the antenna fits easily.
-
 5. Attach the antenna connection end to the XIAO ESP32-C5's U.FL port.
-
 6. Carefully place the clock into the clock body housing. You'll have to bend the wings of the slide switches to fit the slots made for them.
-
 7. Test your hardware to ensure none of the cabling was compromised during the fitting.
-
 8. Place the ceramic antenna into the slot at the bottom of the clock body housing.
-
 9. Attach the antenna to the back of the clock body housing.
-
 10. Remove the two sticker backs from the antenna and stick it in place.
-
 11. Attach the assembled backplate to the bottom of the clock body housing. This may be glued later.
-
 12. Carefully glue the tactile push button into the slot at the front of the clock top housing. The slit allows the button's wires to be buried into the clock body housing.
-
 13. Begin to fit the clock top housing onto the clock body housing.
-
 14. Once everything is working and fits snugly, use a few small dabs of super glue to make the assembly more permanent.
 
 ---
-
 ## Flashing Your XIAO ESP32-C5
-
 The firmware that drives the clock display and wardriving was written for this project. Consider flashing it onto your XIAO ESP32-C5 **before** you stuff everything into the 3D-printed parts.
 
 Use the Arduino IDE to install the firmware. There are **10 files** in total — drop all 10 into a new folder and open `WarcLock.ino` to get started.
