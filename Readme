@@ -119,8 +119,8 @@ Complete pin mapping for all components.
 
 | Switch Leg | XIAO Pin | GPIO |
 | --- | --- | --- |
-| Leg 1 (signal) | Bat + | — |
-| Leg 2 (common) | Bat + | — |
+| Leg 1 (signal) | Bat + on XIAO| — |
+| Leg 2 (common) | Bat + on Battery | — |
 
 Interrupt the positive battery line with a switch.
 
